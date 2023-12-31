@@ -18,6 +18,49 @@ body {
   background-size: cover;
 }
 
+.copybtn{
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  transition: box-shadow 0.3s ease-in;
+  border-radius:10px;
+}
+
+.copybtn:hover {
+  cursor: pointer;
+  box-shadow: 0 0 12px rgb(0, 0, 0);
+}
+
+.copybtn:active{
+  transform: scale(0.75);
+}
+
+.cpy{
+  text-align: center;
+  color: white;
+  margin-left: 10px;
+  width: 21px;
+  height: 19px;
+  margin: 0 auto;
+}
+
+.chatroom{
+  text-align: center;
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1em;
+  padding: 10px;
+  background: linear-gradient(to right,   #c01835, #4400f2); 
+  border-radius: 10px;
+  width:15vw;
+  margin: 0 auto;
+  margin-bottom: 2vh;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -30,7 +73,7 @@ body {
   text-align: center;
   padding: 20px;
   border: 1px solid #00000000;
-  background: rgba(0, 0, 0, 0.450);
+  background: rgba(0, 0, 0, 0.750);
   border-radius: 10px;
   max-width: 30vw;
   width: 100%;
@@ -57,12 +100,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-.chatroom{
-  text-align: center;
-  color:rgb(0, 255, 0);
-  font-weight:500;
 }
 
 .input {

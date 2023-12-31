@@ -6,6 +6,7 @@ import "react-chat-elements/dist/main.css";
 import React from "react";
 import { toast } from 'react-hot-toast';
 import { useSearchParams } from 'next/navigation';
+import { IoCopyOutline } from "react-icons/io5";
 
 const page = () => {
   const { sendMessage, messages } = useSocket();
@@ -51,6 +52,18 @@ const page = () => {
     }
   };
 
+  const copyHandler = async () => {
+    try {
+      if (roomCode) {
+        await navigator.clipboard.writeText(roomCode);
+        toast.success(`Room Code copied to clipboard`);
+      }
+    } catch (error) {
+      console.error('Error copying to clipboard:', error);
+      toast.error('Failed to copy Room Code to clipboard');
+    }
+  };
+
    // Scroll to the bottom whenever messages change
    useEffect(() => {
     if (displayScreenRef.current) {
@@ -62,8 +75,7 @@ const page = () => {
   return (
     <div className="app">
       <h1 className="heading">Real Time Scalable Chat App</h1>
-      <p className="chatroom">Chat Room Code: {roomCode}</p>
-      
+      <p className="chatroom">Chat Room Code: {roomCode} <span><button onClick={copyHandler} className="copybtn"><IoCopyOutline className="cpy"/></button></span></p>
       <div ref={displayScreenRef} className="display-screen">
         <div className="background-container">
           {messages.map((e, index) => {

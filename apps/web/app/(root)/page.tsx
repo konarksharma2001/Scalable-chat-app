@@ -9,14 +9,14 @@ const Home = () => {
   const [roomCode, setRoomCode] = useState("");
   const [roomAction, setRoomAction] = useState("create");
   const router = useRouter();
-
+  
   const handleJoin = () => {
     // Perform any necessary validation before redirecting
     if (name.trim()) {
       if(roomCode.trim()){
         // Redirect to the chat page with the name as a query parameter
         toast.success("New Chat Room Created: "+roomCode);
-        setTimeout(() => {router.push(`/chat?name=${encodeURIComponent(name)}&roomCode=${encodeURIComponent(roomCode)}`);},1500)
+        setTimeout(() => {router.push(`/chat?name=${encodeURIComponent(name)}&roomCode=${encodeURIComponent(roomCode)}`);},800)
       }
       else{
         toast.error("Please Enter a Room Code.");
