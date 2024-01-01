@@ -3,18 +3,20 @@ import Redis from "ioredis";
 import prismaClient from "./prisma";
 import { produceMessage } from "./kafka";
 
+require('dotenv').config();
+
 const pub = new Redis({
-  host: "redis-55638ba-scalable-chat-app-konark.a.aivencloud.com",
-  port: 21134,
-  username: "default",
-  password: "AVNS_eVVkifTmKjtxsQuQVS9",
+  host: process.env.HOST_NAME,
+  port: Number(process.env.PORT_NAME), 
+  username: process.env.USER_NAME,
+  password: process.env.PASSWORD,
 });
 
 const sub = new Redis({
-  host: "redis-55638ba-scalable-chat-app-konark.a.aivencloud.com",
-  port: 21134,
-  username: "default",
-  password: "AVNS_eVVkifTmKjtxsQuQVS9",
+  host: process.env.HOST_NAME,
+  port: Number(process.env.PORT_NAME),
+  username: process.env.USER_NAME,
+  password: process.env.PASSWORD,
 });
 
 class SocketService {
