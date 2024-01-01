@@ -14,7 +14,6 @@ const page = () => {
   const { socket } = useSocket();
   const displayScreenRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
-  const name = searchParams.get('name')
   let roomCode = searchParams.get('roomCode');
   
   const formatAMPM = (date: Date) => {
@@ -86,7 +85,7 @@ const page = () => {
                 key={index}
                 className={`messages ${e.id === socket?.id ? "user1" : "user2"}`}
               >
-                {message} <span className="subscript-time">{name} : {time}</span>
+                {message} <span className="subscript-time">{e.name} : {time}</span>
               </p>
             );
           })}

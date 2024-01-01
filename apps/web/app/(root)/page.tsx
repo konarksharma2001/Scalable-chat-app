@@ -13,12 +13,23 @@ const Home = () => {
   const handleJoin = () => {
     // Perform any necessary validation before redirecting
     if (name.trim()) {
-      if(roomCode.trim()){
+      if (roomCode.trim()) {
         // Redirect to the chat page with the name as a query parameter
-        toast.success("New Chat Room Created: "+roomCode);
-        setTimeout(() => {router.push(`/chat?name=${encodeURIComponent(name)}&roomCode=${encodeURIComponent(roomCode)}`);},800)
-      }
-      else{
+        if (roomAction === "create") {
+          // If the "create" radio button is selected
+          toast.success("New Chat Room Created: " + roomCode);
+        } else if (roomAction === "join") {
+          // If the "join" radio button is selected
+          toast.success("Joined Chat Room: " + roomCode);
+        }
+
+        localStorage.setItem("userName", name);
+        localStorage.setItem("roomCode", roomCode);
+  
+        setTimeout(() => {
+          router.push(`/chat?name=${encodeURIComponent(name)}&roomCode=${encodeURIComponent(roomCode)}`);
+        }, 800);
+      } else {
         toast.error("Please Enter a Room Code.");
       }
     } else {
